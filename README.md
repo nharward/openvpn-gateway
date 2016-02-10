@@ -4,7 +4,7 @@ Minimal container that routes LAN traffic over an OpenVPN connection. I was usin
 
 ## Why?
 
-Unlike the containers I found on docker hub, this one specifically does *not* to have anything to do with configuring OpenVPN. The assumption is that this is, for whatever reason, better done elsewhere. This project exists for the purpose of gluing OpenVPN to the needed `iptables` commands to route others' traffic through the VPN tunnel in a very small image - nothing more. It also assumes you can set up a data volume and/or use the `docker run` _-v_ option without assistance. For something more comprehensive and user-friendly, search for `openvpn` on Docker hub.
+Unlike the containers I found on docker hub, this one specifically does *not* to have anything to do with configuring OpenVPN. The assumption is that this is, for whatever reason, better done elsewhere. This project exists for the purpose of gluing OpenVPN to the needed `iptables` commands to route others' traffic through the VPN tunnel in a very small image (under 8MB) - nothing more. It also assumes you can set up a data volume and/or use the `docker run` _-v_ option without assistance. For something more comprehensive and user-friendly, search for `openvpn` on Docker hub.
 
 ## Building it
 
@@ -14,7 +14,7 @@ Unlike the containers I found on docker hub, this one specifically does *not* to
 
 ## Running it
 
-`docker run --rm -d --net=host --cap-add=NET_ADMIN --device /dev/net/tun my-vpn-gateway <full path to ovpn conf>`
+`docker run -d --net=host --cap-add=NET_ADMIN --device /dev/net/tun my-vpn-gateway <full path to ovpn conf>`
 
 Not included are either `-v` or `--volumes-from` option(s) to pass in your separately-created OpenVPN configuration.
 
